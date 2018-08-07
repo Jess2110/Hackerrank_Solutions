@@ -1,0 +1,44 @@
+/*
+Node is defined as 
+
+class Node {
+    public:
+        int data;
+        Node *left;
+        Node *right;
+        Node(int d) {
+            data = d;
+            left = NULL;
+            right = NULL;
+        }
+};
+
+*/
+
+    Node * insert(Node * root, int data) {
+        
+        Node * current=root;
+        Node * parent =NULL;
+        Node * newnode=(struct Node *)malloc(sizeof(struct Node));;
+        newnode->data=data;
+        newnode->left=NULL;
+        newnode->right=NULL;
+        if(root==NULL)return newnode;
+        while(current!=NULL){
+            parent=current;
+            if(current->data<data){
+                current=current->right;
+            }
+            else{
+            current=current->left;
+            }
+        }
+        if(parent->data<data){
+        parent->right=newnode;
+        }
+        else{
+            parent->left=newnode;
+        }
+        
+        return root;
+    }
